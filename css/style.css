@@ -108,7 +108,7 @@ body {
 .actionButton {
     width: 20vmin;
     height: 20vmin;
-    background-color: rgba(43, 0, 255, 0.247);
+    background-color: rgba(4, 255, 0, 0.247);
     border: none;
     border-radius: 3vh;
     color: white;
@@ -126,7 +126,7 @@ body {
     width: 20vmin;
     height: 20vmin;
     background-color: rgba(255, 115, 0, 0);
-    border: rgb(255, 115, 0) dashed 0.5vmin;
+    border: rgb(81, 255, 0) dashed 0.5vmin;
     border-radius: 3vh;
     color: white;
     font-size: 4vmin;
@@ -143,7 +143,7 @@ body {
     width: 20vmin;
     height: 20vmin;
     background-color: rgba(255, 115, 0, 0);
-    border: rgb(255, 115, 0) dashed 0.5vmin;
+    border: rgb(0, 255, 26) dashed 0.5vmin;
     border-radius: 3vh;
     color: white;
     font-size: 4vmin;
@@ -157,7 +157,7 @@ body {
 }
 
 .toggledOn {
-    background-color: rgba(255, 115, 0, 0.6);
+    background-color: rgba(9, 255, 0, 0.6);
     border: white dashed 0.5vmin;
 
 }

@@ -1,26 +1,3 @@
-<!-- MIT License
-
-Copyright (c) 2025 Tigerbots
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE. -->
-
-
 <!DOCTYPE html>
 <html lang="en" oncontextmenu="return false">
 
@@ -29,7 +6,7 @@ SOFTWARE. -->
     <base href="." />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover, minimum-scale=1">
-    <title>Touchboard</title>
+    <title>Touchboard (example) </title>
     <link rel="stylesheet" href="./css/style.css">
     <script src="./lib/jquery.js"></script>
 </head>
@@ -37,15 +14,11 @@ SOFTWARE. -->
 <body>
 
     <div class="tabNav">
-        <!-- Insert tab buttons after this or between existing buttons after here -->
         <div class="tab currentTab" data-page=".autonomus"><i>Pose-Plotter</i></div>
-
+        <div class="tab tabConnection" data-page=".teleop">Teleop</div>
+        <div class="tab tabConnection" data-page=".reefDrive">Dual</div>
+        <div class="tab tabConnection" data-page=".driverTarget">Poses</div>
         <div class="tab tabConnection" data-page=".jukeBox">Jukebox</div>
-
-        <div class="tab tabConnection" data-page=".uiTestTab" data-displaytype="flex">Ui Test</div>
-        <!-- Comment out when done testing-->
-
-        <!-- Insert tab buttons before this or between existing buttons before here -->
 
 
         <p class="connectionText">Offline</p>
@@ -63,11 +36,8 @@ SOFTWARE. -->
         <p class="simHint">Use localhost for simulator</p>
         <input type="button" class="setTeam" value="Set">
     </div>
-    <!-- Insert tabs after this or between existing tabs after here -->
 
-    <!-- I recommend minimizing existing tabs in vscode-->
     <div class="autonomus pageF">
-
         <div class="commands commandName">
             <div class="commandNav">
                 <h1 class="commandTitle">Commands</h1>
@@ -82,10 +52,13 @@ SOFTWARE. -->
                 </div>
             </div>
             <div class="commandHolder">
-                <!-- <div class="autoCommand" data-value="*value" data-displayName="*displayName"></div> -->
                 <!-- Insert Commands After here-->
-
-                
+                <div class="autoCommand" data-value="4S" data-displayName="Auto Shoot L4"></div>
+                <div class="autoCommand" data-value="3" data-displayName="Elevator 3"></div>
+                <div class="autoCommand" data-value="2" data-displayName="Elevator 2"></div>
+                <div class="autoCommand" data-value="0" data-displayName="Elevator Down"></div>
+                <div class="autoCommand" data-value="S" data-displayName="Shoot"></div>
+                <div class="autoCommand" data-value="T" data-displayName="Intake"></div>
 
                 <!-- Insert Commands Before here-->
             </div>
@@ -233,17 +206,147 @@ SOFTWARE. -->
             <input type="button" class="send" value="➦">
         </div>
     </div>
+    <div class="teleop page">
+        <button class="actionButton animatedButton L4" data-type="boolean" data-topic="L4btn"
+            data-value="false">L4</button>
+        <button class="actionButton animatedButton L3" data-type="boolean" data-topic="L3btn"
+            data-value="false">L3</button>
+        <button class="actionButton animatedButton L2" data-type="boolean" data-topic="L2btn"
+            data-value="false">L2</button>
+        <button class="actionButton animatedButton L1" data-type="boolean" data-topic="L1btn"
+            data-value="false">L1</button>
+        <button class="actionButton animatedButton intake" data-type="boolean" data-topic="Intake"
+            data-value="false">Intake</button>
+        <button class="actionButton animatedButton revIntake" data-type="boolean" data-topic="RevIntake"
+            data-value="false">Reverse Intake</button>
+        <button class="actionButton animatedButton shoot" data-type="boolean" data-topic="Shoot"
+            data-value="false">Shoot</button>
+        <button class="actionButton animatedButton shoot2" data-type="boolean" data-topic="Shoot2"
+            data-value="false">Shoot2</button>
+
+        <div class="verticalAxis actuatorAxis" data-topic="ActuatorAxis" data-value="0" data-type="double">
+            <h1 class="axisLabel">Actuator Control</h1>
+            <input class="verticalAxisKnob" type="range" min="-1" max="1" step="0.01" value="0">
+        </div>
+    </div>
+
+    <div class="reefDrive page">
+        <!--Use btnHolder class to give buttons inside div logic-->
+        <div class="reefPFHolder btnHolder">
+            <button class="oneShotButton  PAbtn" data-type="boolean" data-topic="PAbtn" data-value="false">A</button>
+            <button class="oneShotButton  PBbtn" data-type="boolean" data-topic="PBbtn" data-value="false">B</button>
+            <button class="oneShotButton  PCbtn" data-type="boolean" data-topic="PCbtn" data-value="false">C</button>
+            <button class="oneShotButton  PDbtn" data-type="boolean" data-topic="PDbtn" data-value="false">D</button>
+            <button class="oneShotButton  PEbtn" data-type="boolean" data-topic="PEbtn" data-value="false">E</button>
+            <button class="oneShotButton  PFbtn" data-type="boolean" data-topic="PFbtn" data-value="false">F</button>
+            <button class="oneShotButton  PGbtn" data-type="boolean" data-topic="PGbtn" data-value="false">G</button>
+            <button class="oneShotButton  PHbtn" data-type="boolean" data-topic="PHbtn" data-value="false">H</button>
+            <button class="oneShotButton  PIbtn" data-type="boolean" data-topic="PIbtn" data-value="false">I</button>
+            <button class="oneShotButton  PJbtn" data-type="boolean" data-topic="PJbtn" data-value="false">J</button>
+            <button class="oneShotButton  PKbtn" data-type="boolean" data-topic="PKbtn" data-value="false">K</button>
+            <button class="oneShotButton  PLbtn" data-type="boolean" data-topic="PLbtn" data-value="false">L</button>
+            <button class="oneShotButton  SLbtn" data-type="boolean" data-topic="SLbtn" data-value="false">Station
+                Left</button>
+            <button class="oneShotButton  SRbtn" data-type="boolean" data-topic="SRbtn" data-value="false">Station
+                Right</button>
+                
+
+        </div>
+        <button class="actionButton animatedButton L4" data-type="boolean" data-topic="L4btn"
+            data-value="false">L4</button>
+        <button class="actionButton animatedButton L3" data-type="boolean" data-topic="L3btn"
+            data-value="false">L3</button>
+        <button class="actionButton animatedButton L2" data-type="boolean" data-topic="L2btn"
+            data-value="false">L2</button>
+        <button class="actionButton animatedButton L1" data-type="boolean" data-topic="L1btn"
+            data-value="false">L1</button>
+        <button class="actionButton animatedButton intake" data-type="boolean" data-topic="Intake"
+            data-value="false">Intake</button>
+        <button class="actionButton animatedButton revIntake" data-type="boolean" data-topic="RevIntake"
+            data-value="false">Reverse Intake</button>
+        <button class="actionButton animatedButton shoot" data-type="boolean" data-topic="Shoot"
+            data-value="false">Shoot</button>
+        <div class="verticalAxis actuatorAxis" data-topic="ActuatorAxis" data-value="0" data-type="double">
+            <h1 class="axisLabel">Actuator Control</h1>
+            <input class="verticalAxisKnob" type="range" min="-1" max="1" step="0.01" value="0">
+        </div>
+    </div>
+
+    <div class="driverTarget page">
+        <!--Use btnHolder class to give buttons inside div logic-->
+        <!-- <button class="oneShotButton  CLbtn" data-type="boolean" data-topic="CLbtn" data-value="false">CL</button>
+            <button class="oneShotButton  CMbtn" data-type="boolean" data-topic="CMbtn" data-value="false">CM</button>
+            <button class="oneShotButton  CRbtn" data-type="boolean" data-topic="CRbtn" data-value="false">CR</button> -->
+
+        <button class="oneShotButton leftHumanPlay LTbtn" data-type="boolean" data-topic="LTbtn" data-value="false"
+            style="grid-area: LT;">Left Top</button>
+        <button class="oneShotButton leftHumanPlay LMbtn" data-type="boolean" data-topic="LMbtn" data-value="false"
+            style="grid-area: LM;">Left Mid</button>
+        <button class="oneShotButton leftHumanPlay LBbtn" data-type="boolean" data-topic="LBbtn" data-value="false"
+            style="grid-area: LB;">Left Bottom</button>
+
+        <div class="reefPFHolder btnHolder">
+            <button class="oneShotButton  PAbtn" data-type="boolean" data-topic="PAbtn" data-value="false">A</button>
+            <button class="oneShotButton  PBbtn" data-type="boolean" data-topic="PBbtn" data-value="false">B</button>
+            <button class="oneShotButton  PCbtn" data-type="boolean" data-topic="PCbtn" data-value="false">C</button>
+            <button class="oneShotButton  PDbtn" data-type="boolean" data-topic="PDbtn" data-value="false">D</button>
+            <button class="oneShotButton  PEbtn" data-type="boolean" data-topic="PEbtn" data-value="false">E</button>
+            <button class="oneShotButton  PFbtn" data-type="boolean" data-topic="PFbtn" data-value="false">F</button>
+            <button class="oneShotButton  PGbtn" data-type="boolean" data-topic="PGbtn" data-value="false">G</button>
+            <button class="oneShotButton  PHbtn" data-type="boolean" data-topic="PHbtn" data-value="false">H</button>
+            <button class="oneShotButton  PIbtn" data-type="boolean" data-topic="PIbtn" data-value="false">I</button>
+            <button class="oneShotButton  PJbtn" data-type="boolean" data-topic="PJbtn" data-value="false">J</button>
+            <button class="oneShotButton  PKbtn" data-type="boolean" data-topic="PKbtn" data-value="false">K</button>
+            <button class="oneShotButton  PLbtn" data-type="boolean" data-topic="PLbtn" data-value="false">L</button>
+        </div>
+
+        <button class="oneShotButton rightHumanPlay RTbtn" data-type="boolean" data-topic="RTbtn" data-value="false"
+            style="grid-area: RT;">Right Top</button>
+        <button class="oneShotButton rightHumanPlay RMbtn" data-type="boolean" data-topic="RMbtn" data-value="false"
+            style="grid-area: RM;">Right Mid</button>
+        <button class="oneShotButton rightHumanPlay RBbtn" data-type="boolean" data-topic="RBbtn" data-value="false"
+            style="grid-area: RB;">Right Bottom</button>
 
 
+    </div>
 
     <div class="jukeBox pageF">
         <div class="songSelector">
-            <!-- <div class='songSetter' data-displayName='*name' data-coverSrc='*coverArtSrc' data-robotFileName='*filename.chrp'></div> -->
-            <!-- Insert Songs After here-->
+            <div class='songSetter' data-displayName='Space Junk Galaxy' data-coverSrc='./coverArt/SuperMarioGalaxy.jpg'
+                data-robotFileName='spj.chrp'> </div>
+            <div class='songSetter' data-displayName='Another Medium' data-coverSrc='./coverArt/Undertale.png'
+                data-robotFileName='AnotherMedium.chrp'> </div>
+            <div class='songSetter' data-displayName='Hopes And Dreams' data-coverSrc='./coverArt/Undertale.png'
+                data-robotFileName='HopesAndDreams.chrp'> </div>
+            <div class='songSetter' data-displayName='Ruins' data-coverSrc='./coverArt/Undertale.png'
+                data-robotFileName='Ruins.chrp'> </div>
+            <div class='songSetter' data-displayName='Otherside' data-coverSrc='./coverArt/LenaReine.jpg'
+                data-robotFileName='Otherside.chrp'> </div>
+            <div class='songSetter' data-displayName='Athletic Theme' data-coverSrc='./coverArt/NewSuperMarioBros.jpg'
+                data-robotFileName='Athletic.chrp'> </div>
+            <div class='songSetter' data-displayName='Super Mario Land' data-coverSrc='./coverArt/MarioLand.jpg'
+                data-robotFileName='SuperMarioLand.chrp'> </div>
+            <div class='songSetter' data-displayName='Staff Roll' data-coverSrc='./coverArt/MarioWorld.png'
+                data-robotFileName='SuperMarioWorldEnding.chrp'> </div>
+            <div class='songSetter' data-displayName='Megalovania' data-coverSrc='./coverArt/Undertale.png'
+                data-robotFileName='Megalovania.chrp'> </div>
+            <div class='songSetter' data-displayName='The Moon' data-coverSrc='./coverArt/Ducktales.png'
+                data-robotFileName='Moon.chrp'> </div>
+            <div class='songSetter' data-displayName='Sanctuary Guardian' data-coverSrc='./coverArt/EarthBound.jpg'
+                data-robotFileName='Sg.chrp'> </div>
+            <div class='songSetter' data-displayName='Fallen Down' data-coverSrc='./coverArt/Undertale.png'
+                data-robotFileName='FallenDown.chrp'> </div>
+            <div class='songSetter' data-displayName='Gusty Garden Galaxy'
+                data-coverSrc='./coverArt/SuperMarioGalaxy.jpg' data-robotFileName='GustyGardenGalaxy.chrp'> </div>
+            <div class='songSetter' data-displayName='Working For Nook' data-coverSrc='./coverArt/AnimalCrossing.jpg'
+                data-robotFileName='WorkingForNook.chrp'> </div>
+            <div class='songSetter' data-displayName='5:00pm' data-coverSrc='./coverArt/AnimalCrossing.jpg'
+                data-robotFileName='AnimalCrossing500.chrp'> </div>
+            <div class='songSetter' data-displayName='The Roost' data-coverSrc='./coverArt/AnimalCrossingWW.jpg'
+                data-robotFileName='AnimalCrossingWWRoost.chrp'> </div>
+            <div class='songSetter' data-displayName='Winter Nights' data-coverSrc='./coverArt/LogoSquareBig.png'
+                data-robotFileName='WinterNights.chrp'> </div>
 
-
-
-            <!-- Insert Songs Before here-->
         </div>
         <div class="playbackBar">
             <div class="hideableBar">
@@ -272,7 +375,6 @@ SOFTWARE. -->
 
     </div>
 
-
     <div class="uiTestTab page">
         <!-- action button sends true as long as it is held -->
         <button class="actionButton animatedButton" data-type="boolean" data-topic="TestActionButton"
@@ -281,8 +383,8 @@ SOFTWARE. -->
         <button class="oneShotButton OneShotTest" data-type="boolean" data-topic="OneShotTest" data-value="false">One
             Shot Button</button>
         <!-- Toggles also work in if you want in reverse, set data-value to true and add toggledOn to the classes -->
-        <button class="toggleButton animatedButton" data-type="boolean" data-topic="TestToggleButton"
-            data-value="false">Toggle Button</button>
+        <button class="toggleButton animatedButton toggledOn" data-type="boolean" data-topic="TestToggleButton"
+            data-value="true">Toggle Button</button>
 
         <!--Set max, min, step, and initial value for the axis, it will snap back after released to inital value-->
         <div class="axis" data-topic="TestAxis" data-value="0" data-type="double">
@@ -306,19 +408,6 @@ SOFTWARE. -->
 
         </div>
 
-        <div class="buttonOptGroup" data-type="string" data-topic="testBOG" data-value="L2">
-            <button class="animatedButton optGroupButton toggledOn"
-                style="background-color: rgba(0, 81, 255, 0); border-color: rgb(0, 47, 255)" data-value="Val1">Value
-                1</button>
-            <button class="animatedButton optGroupButton"
-                style="background-color: rgba(255, 0, 0, 0); border-color: rgb(255, 0, 0)" data-value="Val2">Value
-                2</button>
-            <button class="animatedButton optGroupButton"
-                style="background-color: rgba(247, 0, 255, 0); border-color: rgb(255, 0, 225) " data-value="Val3">Value
-                3</button>
-
-        </div>
-
         <!-- set max, min. and value in the parent element.  -->
         <div class="numberComponent" data-topic='TestAdder' data-type="double" data-step="0.1" data-min="-1"
             data-max="1" data-value="0" data-persist="true">
@@ -333,9 +422,6 @@ SOFTWARE. -->
             <h1 class="bSValue">Value</h1>
         </div>
     </div>
-
-    <!-- Insert tabs before this or between existing tabs before here -->
-
     <script src="./js/ui.js" type="module"></script>
     <script src="./js/autoBuilder.js" type="module"></script>
     <script src="./js/jukebox.js" type="module"></script>
