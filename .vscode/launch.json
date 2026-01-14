@@ -10,7 +10,7 @@
   "configurations": [
     {
       "name": "Renderer",
-      "port": 5500,
+      "port": 9222,
       "request": "attach",
       "type": "chrome",
       "webRoot": "${workspaceFolder}"
